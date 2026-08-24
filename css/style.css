@@ -22,6 +22,10 @@ html {
   scroll-behavior: smooth;
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -107,9 +111,14 @@ img {
   transition: border-color 0.2s ease;
 }
 
-.nav-links a:hover,
 .nav-links a[aria-current="page"] {
   border-bottom-color: var(--ink);
+}
+
+@media (hover: hover) {
+  .nav-links a:hover {
+    border-bottom-color: var(--ink);
+  }
 }
 
 .nav-links .btn {
@@ -171,11 +180,19 @@ img {
 .hero h1 {
   font-size: clamp(2.6rem, 6vw, 4.2rem);
   line-height: 1.05;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: clamp(2rem, 9vw, 2.6rem);
+  }
 }
 
 .hero p.lede {
   max-width: 42ch;
   margin: 1rem auto 0;
+  padding: 0 1rem;
   font-size: 1.15rem;
 }
 
@@ -334,6 +351,7 @@ img {
 @media (max-width: 560px) {
   .member-card {
     flex-direction: column;
+    align-items: center;
     text-align: center;
   }
 }
@@ -375,6 +393,15 @@ img {
   }
   .nav-links {
     width: 100%;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.1rem;
+  }
+  .nav-links li:last-child {
+    flex: 1 1 100%;
+  }
+  .nav-links .btn {
+    display: block;
+    width: 100%;
+    padding-bottom: 0.8rem;
   }
 }
